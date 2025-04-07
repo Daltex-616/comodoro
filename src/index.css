@@ -1,0 +1,173 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 329 88% 52%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 222 89% 42%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 270 74% 46%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 329 88% 52%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 222 89% 42%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 270 74% 46%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .area-card {
+    @apply relative overflow-hidden rounded-2xl transition-all duration-300 hover:shadow-lg hover:scale-[1.02];
+  }
+  
+  .area-card::before {
+    @apply content-[''] absolute inset-0 bg-black bg-opacity-20 transition-all duration-300 z-10;
+  }
+  
+  .area-card:hover::before {
+    @apply bg-opacity-0;
+  }
+  
+  .area-card-title {
+    @apply absolute inset-0 flex items-center justify-center text-white font-bold text-center text-lg md:text-xl p-4 z-20;
+    text-shadow: 
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      0 -2px 0 #000,
+      0 2px 0 #000,
+      -2px 0 0 #000,
+      2px 0 0 #000;
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-comodoro-blue via-comodoro-purple to-comodoro-pink bg-clip-text text-transparent;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-lg rounded-2xl;
+  }
+  
+  .nav-link {
+    @apply relative py-2 text-foreground/80 hover:text-primary transition-colors;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+  
+  .text-navy-blue {
+    @apply text-[#0f172a];
+  }
+  
+  .text-comodoro-blue {
+    @apply text-[#4B9CD3];
+  }
+  
+  /* Nuevas animaciones para carrusel */
+  .slide-in-right {
+    animation: slideInRight 0.5s ease-out forwards;
+  }
+  
+  .slide-out-left {
+    animation: slideOutLeft 0.5s ease-out forwards;
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutLeft {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+  }
+}
